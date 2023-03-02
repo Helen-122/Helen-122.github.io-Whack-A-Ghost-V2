@@ -133,7 +133,7 @@ function bonkGhost() {
 
  // -------------------------------------------------CURSOR -----------------------------
 //vanessa
-
+/*
         const cursor = document.querySelector(".cursor img")
 
         window.addEventListener("mousemove", (e) => {
@@ -148,6 +148,27 @@ function bonkGhost() {
                 //la fonction click est a l'interieur de la fonction mousemove. le curseur ne pourrait pas bouger sans la fonction mousemove
             });
         });
+*/
+const cursor = document.querySelector(".cursor img");
+
+window.addEventListener("mousemove", (e) => {
+    cursor.style.top = e.pageY + "px";
+    cursor.style.left = e.pageX + "px";
+});
+
+window.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    cursor.style.top = touch.pageY + "px";
+    cursor.style.left = touch.pageX + "px";
+});
+
+window.addEventListener("click", () => {
+    cursor.style.animation = "hit 0.1s ease";
+    setTimeout(() => {
+        cursor.style.removeProperty("animation");
+    }, 100);
+});
 
 
 // ------------------------------------------------- TIMER -----------------------------
